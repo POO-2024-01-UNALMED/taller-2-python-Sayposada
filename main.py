@@ -15,8 +15,33 @@ class Asiento:
 
 #motor 
 
+class Auto:
+  cantidadCreados = 0
+  def __init__ (self, modelo, precio, asientos, marca, motor, registro):
+    self.modelo = modelo
+    self.precio = precio
+    self.asientos = asientos
+    self.marca = marca
+    self.motor = motor
+    self.registro = registro
+    
+  def cantidadAsientos (self):
+    numAsientos = 0
+    for asiento in self.asientos:
+      if (type(asiento) == Asiento):
+        numAsientos += 1
+    return numAsientos
+
+  def verificarIntegridad(self):
+    if (self.motor.registro == self.registro):
+      for asiento in self.asientos:
+        if (type(asiento) != Asiento):
+          return "Las piezas no son originales"
+      return "Auto original"
+    else:
+      return "Las piezas no son originales"
 class Motor:
-  def __init__(self, numeroCilindros, tipo, registro) -> None:
+  def __init__(self, numeroCilindros, tipo, registro):
     self.numeroCilindros = numeroCilindros
     self.tipo= tipo
     self.registro= registro
@@ -29,36 +54,3 @@ class Motor:
   def asignarTipo(self, tipo):
     if (tipo == "electrico" or tipo == "gasolina"):
       self.tipo = tipo
-
-
-
-class Auto:
-  cantidadCreados = 0
-  def __init__ (self, modelo, precio, asientos, marca, motor, registro):
-    self.modelo = modelo
-    self.precio = precio
-    self.asientos = Asiento
-    self.marca = marca
-    self.motor = motor
-    self.registro = registro
-    
-  def cantidadAsientos (self):
-    numAsientos = 0
-    for Asiento in self.asientos:
-      if (type(Asiento) == Asiento):
-        numAsientos += 1
-        return numAsientos
-
-  def verificarIntegridad(self):
-    if (self.motor.registro == self.registro):
-      for Asiento in self.asientos:
-        if (type(Asiento) == Asiento):
-          return "Auto original"
-        else:
-          return "Las piezas no son originales"
-    else:
-      return "Las piezas no son originales"
-        else:
-          return "Las piezas no son originales"
-    else:
-      return "Las piezas no son originales"
